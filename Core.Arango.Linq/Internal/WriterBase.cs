@@ -85,6 +85,16 @@ namespace Core.Arango.Linq.Internal {
             sb.Append(s);
         }
 
+        protected void InsetSkipForLimit(string s)
+        {
+            var str = sb.ToString();
+            var index = str.IndexOf("LIMIT ", StringComparison.InvariantCultureIgnoreCase);
+            if (index > 0)
+            {
+                sb.Insert(index + 6, s);
+            } // doesn't have sence to put only skip for AQL query
+        }
+
         protected virtual void PreWrite() { }
 
         /// <summary>Write a string-rendering of an expression or other type used in expression trees</summary>

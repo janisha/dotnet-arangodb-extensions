@@ -616,6 +616,15 @@ namespace Core.Arango.Linq.Internal
                 Write($"\nLIMIT {value}");
             }
 
+            else if (name.Equals("skip", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var argument = arguments.First();
+
+                var value = int.Parse(argument.x.ToString());               
+
+                InsetSkipForLimit($" {value}, ");
+            }
+
 
             else
             {
